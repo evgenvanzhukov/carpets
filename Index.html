@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоковры Premium - Индивидуальные ковры для вашего автомобиля</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap">
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a3c6e;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #1a3c6e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2a5caa;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #1a3c6e;
+            border: 2px solid #1a3c6e;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1a3c6e;
+            color: white;
+        }
+        
+        /* Шапка */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a3c6e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #e63946;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #1a3c6e;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #1a3c6e;
+            cursor: pointer;
+        }
+        
+        /* Первый экран (Hero) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .quick-search {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .quick-search h3 {
+            color: #1a3c6e;
+            margin-bottom: 15px;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-form select {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Преимущества */
+        .features {
+            background-color: #f8f9fa;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #1a3c6e;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Категории */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-content {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        /* Популярные товары */
+        .products {
+            background-color: #f8f9fa;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e63946;
+            margin: 15px 0;
+        }
+        
+        .btn-small {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+        
+        .center-btn {
+            text-align: center;
+        }
+        
+        /* Как мы работаем */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .process-step {
+            text-align: center;
+            width: 23%;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            background-color: #1a3c6e;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        /* Отзывы */
+        .reviews-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .review-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 0 10px;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .review-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .review-stars {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        /* Блог */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .blog-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Призыв к действию */
+        .cta {
+            background-color: #1a3c6e;
+            color: white;
+        }
+        
+        .cta .section-title {
+            color: white;
+        }
+        
+        .cta-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .cta-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .cta-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .privacy-notice {
+            font-size: 0.8rem;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            font-size: 1.2rem;
+            color: #e63946;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .footer-about {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #1a3c6e;
+        }
+        
+        .footer-title {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Плавающие элементы */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #e63946;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s;
+        }
+        
+        .floating-btn:hover {
+            background-color: #c1121f;
+            transform: scale(1.1);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a3c6e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .process-step {
+                width: 48%;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .process-step {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container container">
+            <a href="#" class="logo">Авто<span>Ковры</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#features">Преимущества</a></li>
+                    <li><a href="#products">Товары</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Первый экран (Hero) -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Автоковры премиум-класса для любого автомобиля</h1>
+                <p>Защита салона, комфорт и стиль с пожизненной гарантией. Индивидуальный пошив под вашу модель авто.</p>
+                <a href="#catalog" class="btn">Подобрать ковры</a>
+                <a href="#contacts" class="btn btn-secondary">Рассчитать стоимость</a>
+                
+                <div class="quick-search">
+                    <h3>Быстрый подбор по марке авто</h3>
+                    <form class="search-form">
+                        <select>
+                            <option value="" selected disabled>Выберите марку</option>
+                            <option value="toyota">Toyota</option>
+                            <option value="bmw">BMW</option>
+                            <option value="mercedes">Mercedes-Benz</option>
+                            <option value="audi">Audi</option>
+                            <option value="volkswagen">Volkswagen</option>
+                            <option value="honda">Honda</option>
+                            <option value="nissan">Nissan</option>
+                            <option value="hyundai">Hyundai</option>
+                            <option value="kia">Kia</option>
+                        </select>
+                        <button type="submit" class="btn">Найти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Второй экран (Преимущества) -->
+    <section class="section features" id="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают наши автоковры</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Индивидуальный пошив</h3>
+                    <p>Изготавливаем точно под модель вашего авто, идеальная посадка без зазоров</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tint-slash"></i>
+                    </div>
+                    <h3>Водостойкие материалы</h3>
+                    <p>Надежная защита от влаги, грязи, соли и химических реагентов</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Пожизненная гарантия</h3>
+                    <p>Гарантируем качество материалов и пошива на весь срок службы</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Быстрая установка</h3>
+                    <p>Идеальная посадка без дополнительной подгонки. Установка за 5 минут</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Экологичные материалы</h3>
+                    <p>Безопасно для вас, детей и домашних животных. Не вызывают аллергии</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Доставка по РФ</h3>
+                    <p>Бесплатная доставка при заказе от 5 000 ₽. Отправка в день заказа</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Третий экран (Категории) -->
+    <section class="section" id="catalog">
+        <div class="container">
+            <h2 class="section-title">Категории автоковров</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Ковры в салон</h3>
+                        <p>Полная защита салона автомобиля. Комплекты на 4-5 ковриков для передних и задних пассажиров.</p>
+                        <a href="#" class="btn btn-small">Смотреть каталог</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Ковры в багажник</h3>
+                        <p>Защита багажного отделения от грязи, влаги и повреждений. Идеальная посадка по контуру.</p>
+                        <a href="#" class="btn btn-small">Смотреть каталог</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Комплекты 3D/4D</h3>
+                        <p>Ковры с высокими бортами для максимальной защиты. Современный дизайн и повышенная функциональность.</p>
+                        <a href="#" class="btn btn-small">Смотреть каталог</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Аксессуары</h3>
+                        <p>Дополнительные аксессуары для защиты и комфорта: чехлы на сиденья, коврики на арки и др.</p>
+                        <a href="#" class="btn btn-small">Смотреть каталог</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Четвертый экран (Популярные товары) -->
+    <section class="section products" id="products">
+        <div class="container">
+            <h2 class="section-title">Популярные модели</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="product-content">
+                        <h3>Комплект Premium для Toyota Camry</h3>
+                        <p>Материал: ЭКО-кожа, Цвет: Черный/Серый</p>
+                        <div class="product-price">8 490 ₽</div>
+                        <a href="#" class="btn btn-small">В корзину</a>
+                        <a href="#" class="btn btn-small btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="product-content">
+                        <h3>Ковер в багажник для BMW X5</h3>
+                        <p>Материал: Резина, Цвет: Черный</p>
+                        <div class="product-price">6 990 ₽</div>
+                        <a href="#" class="btn btn-small">В корзину</a>
+                        <a href="#" class="btn btn-small btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="product-content">
+                        <h3>Комплект 3D для Volkswagen Tiguan</h3>
+                        <p>Материал: Термопласт, Цвет: Черный</p>
+                        <div class="product-price">9 990 ₽</div>
+                        <a href="#" class="btn btn-small">В корзину</a>
+                        <a href="#" class="btn btn-small btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="product-content">
+                        <h3>Комплект Luxury для Mercedes-Benz E-Class</h3>
+                        <p>Материал: Велюр, Цвет: Бежевый</p>
+                        <div class="product-price">12 490 ₽</div>
+                        <a href="#" class="btn btn-small">В корзину</a>
+                        <a href="#" class="btn btn-small btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="center-btn">
+                <a href="#" class="btn">Перейти в каталог</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Пятый экран (Как мы работаем) -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">4 простых шага к идеальным автоковрам</h2>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Выбор модели</h3>
+                    <p>Выберите марку и модель автомобиля в нашем конфигураторе или по телефону</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Подбор параметров</h3>
+                    <p>Определитесь с материалом, цветом и дополнительными опциями для ваших ковров</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Изготовление</h3>
+                    <p>Мы изготавливаем ковры индивидуально под ваш авто за 3-5 рабочих дней</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Доставка и установка</h3>
+                    <p>Бесплатная доставка и простая установка за 5 минут без специальных инструментов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Шестой экран (Отзывы) -->
+    <section class="section reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
+                        <div class="review-info">
+                            <h4>Андрей Смирнов</h4>
+                            <p>Toyota Camry, Москва</p>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Заказывал комплект ковров для Camry. Качество на высоте, посадка идеальная, никаких зазоров. Особенно порадовали высокие бортики - зимой снег и грязь не просыпаются на ковролин. Доставили быстро, упаковано хорошо. Рекомендую!"</p>
+                </div>
+            </div>
+            
+            <div class="center-btn" style="margin-top: 40px;">
+                <a href="#" class="btn">Оставить отзыв</a>
+                <a href="#" class="btn btn-secondary">Все отзывы</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Седьмой экран (Блог) -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Полезные статьи об автоковрах</h2>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-date">15 мая 2023</div>
+                        <h3>Как выбрать автоковры: полное руководство</h3>
+                        <p>Разбираемся в материалах, типах крепления и особенностях выбора ковров для разных сезонов.</p>
+                        <a href="#" class="btn btn-small">Читать статью</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-date">28 апреля 2023</div>
+                        <h3>Уход за автоковрами: как продлить срок службы</h3>
+                        <p>Простые советы по очистке и уходу за коврами из разных материалов: резина, текстиль, ЭКО-кожа.</p>
+                        <a href="#" class="btn btn-small">Читать статью</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-date">10 апреля 2023</div>
+                        <h3>3D vs 4D ковры: в чем разница и что выбрать</h3>
+                        <p>Сравниваем популярные типы ковров с высокими бортами, их преимущества и недостатки.</p>
+                        <a href="#" class="btn btn-small">Читать статью</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="center-btn" style="margin-top: 40px;">
+                <a href="#" class="btn">Все статьи</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Восьмой экран (Призыв к действию) -->
+    <section class="section cta" id="contacts">
+        <div class="container">
+            <h2 class="section-title">Готовы подобрать идеальные ковры для вашего авто?</h2>
+            
+            <div class="cta-container">
+                <div class="cta-content">
+                    <p>Оставьте заявку и получите бесплатную консультацию от нашего специалиста. Мы поможем подобрать оптимальный вариант по материалам, цвету и цене.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h4>Телефон</h4>
+                                <p>8 (800) 555-35-35</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@avtokovry.ru</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Адрес</h4>
+                                <p>г. Москва, ул. Автозаводская, д. 15</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h4>График работы</h4>
+                                <p>Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-form">
+                    <h3>Оставить заявку</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" placeholder="Ваш телефон" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select required>
+                                <option value="" selected disabled>Марка автомобиля</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="bmw">BMW</option>
+                                <option value="mercedes">Mercedes-Benz</option>
+                                <option value="audi">Audi</option>
+                                <option value="volkswagen">Volkswagen</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Получить консультацию</button>
+                        
+                        <div class="privacy-notice">
+                            Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности и обработкой персональных данных.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">Авто<span>Ковры</span></a>
+                    <p class="footer-about">Производство и продажа качественных автоковров с индивидуальным пошивом под любую модель автомобиля. Работаем с 2010 года.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Каталог</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="#">Ковры в салон</a></li>
+                            <li><a href="#">Ковры в багажник</a></li>
+                            <li><a href="#">Комплекты 3D/4D</a></li>
+                            <li><a href="#">Аксессуары</a></li>
+                            <li><a href="#">Распродажа</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Информация</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="#">О компании</a></li>
+                            <li><a href="#">Доставка и оплата</a></li>
+                            <li><a href="#">Гарантия</a></li>
+                            <li><a href="#">Отзывы</a></li>
+                            <li><a href="#">Блог</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Контакты</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><i class="fas fa-phone"></i> 8 (800) 555-35-35</li>
+                            <li><i class="fas fa-envelope"></i> info@avtokovry.ru</li>
+                            <li><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Автозаводская, д. 15</li>
+                            <li><i class="fas fa-clock"></i> Пн-Пт: 9:00-20:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Автоковры Premium. Все права защищены.</p>
+                <p><a href="#">Политика конфиденциальности</a> | <a href="#">Пользовательское соглашение</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Плавающие кнопки -->
+    <a href="tel:88005553535" class="floating-btn">
+        <i class="fas fa-phone"></i>
+    </a>
+    
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainMenu.classList.toggle('active');
+        });
+        
+        // Кнопка "Наверх"
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Закрываем мобильное меню после клика
+                    mainMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // Обработка формы
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // В реальном проекте здесь будет отправка данных на сервер
+            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+            contactForm.reset();
+        });
+        
+        // Обработка формы быстрого поиска
+        const searchForm = document.querySelector('.search-form');
+        
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const carBrand = this.querySelector('select').value;
+            
+            if (carBrand) {
+                alert(`Подбор ковров для марки: ${carBrand}. В реальном проекте здесь будет переход в каталог с фильтром.`);
+            }
+        });
+    </script>
+</body>
+</html>
